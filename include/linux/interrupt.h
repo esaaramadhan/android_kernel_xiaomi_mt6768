@@ -65,6 +65,16 @@
  *                interrupt handler after suspending interrupts. For system
  *                wakeup devices users need to implement wakeup detection in
  *                their interrupt handlers.
+<<<<<<< HEAD
+=======
+ * IRQF_PERF_AFFINE - Interrupt is critical to the overall performance of the
+ *		      system and should be processed on a big CPU.
+<<<<<<< HEAD
+=======
+ * IRQF_PRIME_AFFINE - Interrupt is critical to the overall performance of the
+ *		       system and should be processed on a prime CPU.
+>>>>>>> 402bfebc3a78 (kernel: Add tri-cluster API to affine IRQs and kthreads to fast CPUs)
+>>>>>>> f0c9daa8390b (<TO BE FIXED> ON {LS})
  */
 #define IRQF_SHARED		0x00000080
 #define IRQF_PROBE_SHARED	0x00000100
@@ -78,6 +88,14 @@
 #define IRQF_NO_THREAD		0x00010000
 #define IRQF_EARLY_RESUME	0x00020000
 #define IRQF_COND_SUSPEND	0x00040000
+<<<<<<< HEAD
+=======
+#define IRQF_PERF_AFFINE	0x00080000
+<<<<<<< HEAD
+=======
+#define IRQF_PRIME_AFFINE	0x00100000
+>>>>>>> 402bfebc3a78 (kernel: Add tri-cluster API to affine IRQs and kthreads to fast CPUs)
+>>>>>>> f0c9daa8390b (<TO BE FIXED> ON {LS})
 
 #define IRQF_TIMER		(__IRQF_TIMER | IRQF_NO_SUSPEND | IRQF_NO_THREAD)
 

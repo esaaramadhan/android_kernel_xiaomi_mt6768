@@ -2278,6 +2278,7 @@ static int __set_cpus_allowed_ptr(struct task_struct *p,
 =======
 
 	/* Don't allow perf-critical threads to have non-perf affinities */
+<<<<<<< HEAD
 
 
 	if ((p->flags & PF_PERF_CRITICAL) && new_mask != cpu_lp_mask && 
@@ -2289,6 +2290,10 @@ static int __set_cpus_allowed_ptr(struct task_struct *p,
 
 	if ((p->flags & PF_PERF_CRITICAL) && new_mask != cpu_perf_mask)
 
+=======
+	if ((p->flags & PF_PERF_CRITICAL) && new_mask != cpu_perf_mask &&
+	    new_mask != cpu_prime_mask)
+>>>>>>> 402bfebc3a78 (kernel: Add tri-cluster API to affine IRQs and kthreads to fast CPUs)
 		return -EINVAL;
 
 >>>>>>> 30f637b322bf (kernel: Extend the perf-critical API to little CPUs)
