@@ -800,7 +800,13 @@ static long gf_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		}
 		gf_irq_gpio_cfg(gf_dev);
 		retval = request_threaded_irq(gf_dev->irq, NULL, gf_irq,
+<<<<<<< HEAD
 				IRQF_TRIGGER_RISING | IRQF_ONESHOT, "goodix_fp_irq", gf_dev);
+=======
+					      IRQF_TRIGGER_RISING |
+					      IRQF_ONESHOT | IRQF_PERF_AFFINE, "goodix_fp_irq",
+					      gf_dev);
+>>>>>>> b3c796328823 ([SQUAS] drivers: affine to IRQF_PERF_AFFINE)
 		if (!retval)
 			gf_debug(INFO_LOG, "%s irq thread request success!\n", __func__);
 		else

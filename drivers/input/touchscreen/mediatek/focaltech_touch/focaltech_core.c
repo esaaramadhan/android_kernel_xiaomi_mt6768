@@ -773,6 +773,7 @@ static int fts_irq_registration(struct fts_ts_data *ts_data)
 	int ret = 0;
 	struct device_node *node = NULL;
 
+<<<<<<< HEAD:drivers/input/touchscreen/mediatek/focaltech_touch/focaltech_core.c
 	node = of_find_matching_node(node, touch_of_match);
 	if (NULL == node) {
 		FTS_ERROR("Can not find touch eint device node!");
@@ -795,6 +796,14 @@ static int fts_irq_registration(struct fts_ts_data *ts_data)
 	ret = request_irq(ts_data->irq, fts_irq_handler,
 					  ts_data->pdata->irq_gpio_flags,
 					  FTS_DRIVER_NAME, ts_data);
+=======
+	ts_data->irq = gpio_to_irq(pdata->irq_gpio);
+	pdata->irq_gpio_flags = IRQF_TRIGGER_FALLING | IRQF_ONESHOT | IRQF_PERF_AFFINE;
+	FTS_INFO("irq:%d, flag:%x", ts_data->irq, pdata->irq_gpio_flags);
+	ret = request_threaded_irq(ts_data->irq, NULL, fts_irq_handler,
+							   pdata->irq_gpio_flags,
+							   FTS_DRIVER_NAME, ts_data);
+>>>>>>> b3c796328823 ([SQUAS] drivers: affine to IRQF_PERF_AFFINE):drivers/input/touchscreen/fts8719/focaltech_core.c
 
 	return ret;
 }
