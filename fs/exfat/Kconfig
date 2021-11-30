@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 config EXFAT_FS
 	tristate "exFAT fs support"
 	default y
@@ -30,10 +31,51 @@ config EXFAT_DEFAULT_CODEPAGE
 	depends on EXFAT_FS
 	help
 	  This option should be set to the codepage of your exFAT filesystems.
+=======
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+config EXFAT_FS
+	tristate "exFAT filesystem support"
+	select NLS
+	help
+	  This allows you to mount devices formatted with the exFAT file system.
+	  exFAT is typically used on SD-Cards or USB sticks.
+
+	  To compile this as a module, choose M here: the module will be called
+	  exfat.
+
+if EXFAT_FS
+>>>>>>> 0f81f066edae (fs: exfat: Import exfat drivers from arter97)
 
 config EXFAT_DEFAULT_IOCHARSET
 	string "Default iocharset for exFAT"
 	default "utf8"
+<<<<<<< HEAD
 	depends on EXFAT_FS
 	help
 	  Set this to the default input/output character set you'd like exFAT to use.
+=======
+	help
+	  Set this to the default input/output character set to use for
+	  converting between the encoding that is used for user visible
+	  filenames and the UTF-16 character encoding that the exFAT
+	  filesystem uses.  This can be overridden with the "iocharset" mount
+	  option for the exFAT filesystems.
+
+config EXFAT_VIRTUAL_XATTR
+	bool "Virtual xattr support for exFAT"
+	default y
+	help
+	  To support virtual xattr.
+
+config EXFAT_VIRTUAL_XATTR_SELINUX_LABEL
+	string "Default string for SELinux label"
+	default "u:object_r:exfat:s0"
+	depends on EXFAT_VIRTUAL_XATTR
+	help
+	  Set this to the default string for SELinux label.
+	  Support for "u:object_r:exfat:s0" was added in Android Pie,
+	  if you're running Oreo or lower, use "u:object_r:vfat:s0" instead.
+
+endif # if EXFAT_FS
+>>>>>>> 0f81f066edae (fs: exfat: Import exfat drivers from arter97)
