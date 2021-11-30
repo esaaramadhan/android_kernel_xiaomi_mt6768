@@ -125,10 +125,14 @@ endmenu
 endif # BLOCK
 
 if BLOCK
-menu "DOS/FAT/NT Filesystems"
+menu "DOS/FAT/EXFAT/NT Filesystems"
 
 source "fs/fat/Kconfig"
 source "fs/exfat/Kconfig"
+<<<<<<< HEAD
+=======
+source "fs/sdfat/Kconfig"
+>>>>>>> 3467a588111d (fs: Include exfat)
 source "fs/ntfs/Kconfig"
 
 endmenu
