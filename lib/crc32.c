@@ -182,29 +182,58 @@ static inline u32 __pure crc32_le_generic(u32 crc, unsigned char const *p,
 }
 
 #if CRC_LE_BITS == 1
+<<<<<<< HEAD
 u32 __pure crc32_le(u32 crc, unsigned char const *p, size_t len)
 {
 	return crc32_le_generic(crc, p, len, NULL, CRCPOLY_LE);
 }
 u32 __pure __crc32c_le(u32 crc, unsigned char const *p, size_t len)
+=======
+u32 __pure crc32_le_base(u32 crc, unsigned char const *p, size_t len)
+{
+	return crc32_le_generic(crc, p, len, NULL, CRCPOLY_LE);
+}
+u32 __pure __crc32c_le_base(u32 crc, unsigned char const *p, size_t len)
+>>>>>>> fdbc13185a02 (fix crc32 :With ThinLTO, clang doesn't allow an alias to an overridden weak)
 {
 	return crc32_le_generic(crc, p, len, NULL, CRC32C_POLY_LE);
 }
 #else
+<<<<<<< HEAD
 u32 __pure crc32_le(u32 crc, unsigned char const *p, size_t len)
+=======
+u32 __pure crc32_le_base(u32 crc, unsigned char const *p, size_t len)
+>>>>>>> fdbc13185a02 (fix crc32 :With ThinLTO, clang doesn't allow an alias to an overridden weak)
 {
 	return crc32_le_generic(crc, p, len,
 			(const u32 (*)[256])crc32table_le, CRCPOLY_LE);
 }
+<<<<<<< HEAD
 u32 __pure __crc32c_le(u32 crc, unsigned char const *p, size_t len)
+=======
+u32 __pure __crc32c_le_base(u32 crc, unsigned char const *p, size_t len)
+>>>>>>> fdbc13185a02 (fix crc32 :With ThinLTO, clang doesn't allow an alias to an overridden weak)
 {
 	return crc32_le_generic(crc, p, len,
 			(const u32 (*)[256])crc32ctable_le, CRC32C_POLY_LE);
 }
 #endif
+
+<<<<<<< HEAD
+=======
+u32 __pure __weak crc32_le(u32 crc, unsigned char const *p, size_t len)
+{
+	return crc32_le_base(crc, p, len);
+}
 EXPORT_SYMBOL(crc32_le);
+
+u32 __pure __weak __crc32c_le(u32 crc, unsigned char const *p, size_t len)
+{
+	return __crc32c_le_base(crc, p, len);
+}
 EXPORT_SYMBOL(__crc32c_le);
 
+>>>>>>> fdbc13185a02 (fix crc32 :With ThinLTO, clang doesn't allow an alias to an overridden weak)
 /*
  * This multiplies the polynomials x and y modulo the given modulus.
  * This follows the "little-endian" CRC convention that the lsbit
