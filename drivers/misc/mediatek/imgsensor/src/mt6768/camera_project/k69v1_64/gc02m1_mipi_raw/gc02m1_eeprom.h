@@ -25,6 +25,7 @@
  */
 unsigned int read_gc02m1_LRC(BYTE *data);
 
+<<<<<<< HEAD:drivers/misc/mediatek/imgsensor/src/mt6768/camera_project/k69v1_64/gc02m1_mipi_raw/gc02m1_eeprom.h
 /*
  * DCC
  *
@@ -32,6 +33,34 @@ unsigned int read_gc02m1_LRC(BYTE *data);
  * @return size of data
  */
 unsigned int read_gc02m1_DCC(BYTE *data);
+=======
+#include <linux/platform_device.h>
+
+enum vib_strength {
+	VOL_1_2 = 0,
+	VOL_1_3,
+	VOL_1_5,
+	VOL_1_8,
+	VOL_2_5,
+	VOL_2_8,
+	VOL_3_0,
+	VOL_3_3,
+};
+
+struct vibrator_hw {
+	int	vib_timer;
+#ifdef CUST_VIBR_LIMIT
+	int	vib_limit;
+#endif
+#ifdef CUST_VIBR_VOL
+	int	vib_vol;
+#endif
+};
+
+struct platform_device;
+void init_cust_vibrator_dtsi(struct platform_device *pdev);
+void init_vibr_oc_handler(void (*vibr_oc_func)(void));
+>>>>>>> bf0d4bad2bde (Added thunderquake vibrator control engine support):drivers/misc/mediatek/vibrator/mt6785/vibrator.h
 
 #endif
 
